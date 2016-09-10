@@ -12,6 +12,8 @@ public:
 
 	Vec2 getCenter() const;
 	double getRadius() const;
+	
+	double circumference() const;
 
 private:
 	Vec2 center_;

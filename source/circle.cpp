@@ -1,5 +1,6 @@
 #include <iostream>
 #include "circle.hpp"
+#include <math.h>
 
 Circle::Circle(Vec2 const& c, double r):
 center_{c},
@@ -19,4 +20,8 @@ Vec2 Circle::getCenter() const {
 
 double Circle::getRadius() const {
 	return radius_;
+}
+
+double Circle::circumference() const {
+	return M_PI*radius_*2;
 }

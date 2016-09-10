@@ -13,6 +13,8 @@ public:
 	Vec2 getStart() const;
 	double getHeight() const;
 	double getLength() const;
+	
+	double circumference() const;
 
 private:
 	Vec2 start_;

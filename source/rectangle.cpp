@@ -25,3 +25,7 @@ double Rectangle::getHeight() const {
 double Rectangle::getLength() const {
 	return length_;
 }
+
+double Rectangle::circumference() const {
+	return 2*(length_+height_);
+}
