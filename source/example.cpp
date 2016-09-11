@@ -1,6 +1,8 @@
 #include "window.hpp"
 #include <utility>
 #include <cmath>
+#include <vector>
+#include <iostream>
 
 #include "rectangle.hpp"
 #include "circle.hpp"
@@ -8,6 +10,13 @@
 int main(int argc, char* argv[])
 {
   Window win{std::make_pair(800,800)};
+
+  Rectangle r2{{0.4, 0.2}, 0.4, 0.5, {0.0, 0.0, 0.0}};
+  Rectangle r{{0.5, 0.5}, 0.2, 0.3, {0.5,0.7,0.2}};
+
+  std::vector<Rectangle> rects;
+  rects.push_back(r);
+  rects.push_back(r2);
 
   while (!win.should_close()) {
     if (win.is_key_pressed(GLFW_KEY_ESCAPE)) {
@@ -37,11 +46,17 @@ int main(int argc, char* argv[])
     win.draw_line(m.first, 0.0f, m.first, 0.01f, 0.0, 0.0, 0.0);
     win.draw_line(m.first, 0.99f,m.first, 1.0f, 0.0, 0.0, 0.0);
 
-    Rectangle r{{0.5, 0.5}, 0.2, 0.3, {0.0, 0.0, 0.0}};
-    r.draw(win);
 
-    Rectangle r2{{0.4, 0.2}, 0.4, 0.5, {0.0, 0.0, 0.0}};
-    r2.draw(win, {0.2, 0.3, 0.6});
+    Vec2 m_pos{win.mouse_position().first, win.mouse_position().second};
+
+    for (int i = 0; i < rects.size(); ++i)
+    {
+      rects[i].draw(win);
+      if(rects[i].is_inside(m_pos)) {
+        rects[i].setColor({0.0,0.0,1.0});
+      }
+      else rects[i].resetColor();
+    }
 
     win.update();
   }

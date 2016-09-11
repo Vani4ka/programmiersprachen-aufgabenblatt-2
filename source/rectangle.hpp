@@ -18,12 +18,16 @@ public:
 	float circumference() const;
 	void draw(Window const& win) const;
 	void draw(Window const& win, Color const& col) const;
+	bool is_inside(Vec2 const& p) const;
+	void setColor(Color const& col);
+	void resetColor();
 
 private:
 	Vec2 start_;
 	float height_;
 	float length_;
 	Color color_;
+	Color basecolor_;
 	
 };
 
