@@ -16,10 +16,14 @@ add_dependencies(example glfw ${COPY_BINARY})
 
 # Build tests
 add_executable(tests
+  window.cpp
+  glew.c
   tests.cpp
   vec2.cpp
   mat2.cpp
-  color.cpp)
+  color.cpp
+  circle.cpp
+  rectangle.cpp)
 target_link_libraries(tests
   ${GLFW_LIBRARIES})
 
